@@ -1,0 +1,57 @@
+Nicolas Derleth
+Project 2 CSC35500
+
+Compiling:
+
+g++ -c planeTest.cpp
+g++ -c AirportAnimator.cpp
+
+g++ planeTest.o AirportAnimator.o -lcurses
+
+
+Run:
+ ./a.out <total_passengers> <total_tours to be done>
+
+
+Ex: ./a.out 79 10
+
+Bugs:
+
+I do not think there are any bugs in the project from the amount of times that I have ran it.
+
+Solving the Project:
+
+I broke the project down piece by piece according to the directions.
+The first thing that I did was create the 8 threads, which requires a new function for the critical section to which I put the airport animator functions in there in order for each thread to complete those tasks. The next step I did was adding the semaphor with the wait and signal commands. I then went through and made sure that the tours completed updated and that if total tours was reached the plane updated to done and returned null.
+
+
+Questions:
+
+1.Try running your program with only 9 passengers. What happens? Why?
+
+
+The planes attempt to board passengers but become stuck with only 1 or 2 passengers in total. They wait indefinitely because there aren’t enough passengers left in the total passenger pool and none will be added.
+
+
+2.Try running your program with 10 passengers. What happens? Why?
+
+
+With 10 passengers, the same issue occurs as with 9 passengers. Each plane tries to take a passenger, but once they’re depleted, the planes end up waiting for more passengers to enter the total pool—which never happens. As a result, they wait indefinitely.
+
+
+3.Try running your program with 42 passengers and 100 tours. What happens? Why?
+
+
+No plane begins a tour because there aren’t enough passengers to meet the requirements for takeoff.
+
+
+4.Try running your program with 79 passengers and 20 tours. What happens? Why?
+
+
+All planes but one reach their capacity of 10 passengers. The remaining plane, plane 6, only boards 9 passengers and must wait at the terminal for additional passengers to be added back to the pool. This deadlock occurs because other planes exhaust the available passengers before plane 6 can board fully.
+
+
+5.What is the minimum number of passengers that will guarantee avoidance of deadlock? Why?
+
+
+The minimum number of passengers required to avoid deadlock is 80, as this allows each plane to fill up completely with 10 passengers, enabling them all to take off. If fewer than 80 passengers are available, deadlock becomes highly likely.
