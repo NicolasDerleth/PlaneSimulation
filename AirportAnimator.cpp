@@ -1,10 +1,4 @@
-/*
- * FILE: AirportAnimator.cpp
- * Author: S. Blythe
- * DATE: 10/2024  
- *
- * provides the implementation for animation of airplanes for project 2
- */
+
 #include "AirportAnimator.hpp"
 
 #include <assert.h>
