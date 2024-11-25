@@ -1,10 +1,4 @@
-/*
- * FILE: AirportAnimator.hpp
- * Author: S. Blythe
- * DATE: 10/2024  
- *
- * provides the animation of airplanes for project 2
- */
+
 #ifndef _AIRPORT_ANIMATOR_HPP_
 #define _AIRPORT_ANIMATOR_HPP_
 
